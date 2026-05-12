@@ -12,17 +12,17 @@ import ContactWizard from './ContactWizard.vue'
 
       <!-- ── Columna izquierda: copy ──────────────────────────────────── -->
       <div class="contact__copy">
-        <p class="contact__label">Hablemos de tu cuerpo</p>
+        <p class="contact__label">Diabetes Regenerativa</p>
 
         <h2 class="contact__title">
-          Tu salud merece<br>
+          Tu metabolismo merece<br>
           <span class="contact__title-grad">criterio clínico</span>
         </h2>
 
         <p class="contact__desc">
-          Cuéntanos qué te trae aquí. En menos de 24 horas un médico evaluador
-          revisará tu caso y te confirmará si calificas para una Consulta Informativa
-          de Evaluación de Viabilidad Regenerativa™.
+          Cuéntanos sobre tu caso de diabetes o condición metabólica. En menos de
+          24 horas un médico evaluador revisará tu perfil y te confirmará si calificas
+          para una Evaluación de Viabilidad Regenerativa™ enfocada en diabetes.
         </p>
 
         <!-- Trust bullets -->
@@ -34,7 +34,7 @@ import ContactWizard from './ContactWizard.vue'
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
             </span>
-            Evaluación inicial sin costo
+            Evaluación metabólica sin costo
           </li>
           <li class="contact__trust-item">
             <span class="contact__trust-icon" aria-hidden="true">
@@ -43,7 +43,7 @@ import ContactWizard from './ContactWizard.vue'
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
             </span>
-            Sin diagnósticos a ciegas ni promesas de cura
+            Sin promesas de cura que no podemos cumplir
           </li>
           <li class="contact__trust-item">
             <span class="contact__trust-icon" aria-hidden="true">
@@ -61,7 +61,7 @@ import ContactWizard from './ContactWizard.vue'
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
             </span>
-            +100,000 casos clínicos analizados
+            +50,000 casos metabólicos analizados
           </li>
         </ul>
 

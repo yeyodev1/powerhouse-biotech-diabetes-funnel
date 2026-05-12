@@ -123,7 +123,7 @@ ${califica ? '✅ CALIFICA' : '❌ NO CALIFICA'}
     ;(window as any).fbq?.('track', 'Lead')
     router.push('/agendar')
   } else {
-    if (!IS_DEV) localStorage.setItem('os_disq_at', String(Date.now()))
+    localStorage.setItem('os_disq_at', String(Date.now()))
     router.push('/sin-espacio')
   }
 }
@@ -159,9 +159,9 @@ watch(() => props.open, (v) => {
             </div>
             <h2 id="cal-title" class="cal-title">
               Antes de agendar, cuéntanos
-              <span class="cal-accent">sobre ti</span>
+              <span class="cal-accent">tu perfil metabólico</span>
             </h2>
-            <p class="cal-subtitle">4 preguntas rápidas para saber si eres candidato — menos de 1 minuto.</p>
+            <p class="cal-subtitle">4 preguntas rápidas para saber si tu caso califica — menos de 1 minuto.</p>
           </div>
 
           <form class="cal-form" @submit.prevent="handleSubmit" novalidate>
@@ -170,7 +170,7 @@ watch(() => props.open, (v) => {
             <fieldset class="cal-fieldset" :class="{ 'has-error': touched && !form.ingresos }">
               <legend class="cal-legend">
                 <span class="cal-q-num">01</span>
-                ¿Qué tipo de cobertura médica tienes actualmente?
+                ¿Qué tipo de cobertura médica tienes?
               </legend>
               <p class="cal-legend-hint">Solo para contextualizar tu perfil — confidencial.</p>
               <div class="cal-options">
@@ -193,14 +193,14 @@ watch(() => props.open, (v) => {
               <div class="cal-legend-wrap">
                 <span class="cal-q-num">02</span>
                 <span class="cal-legend-text">
-                  <strong>¿Te gustaría recuperar tu calidad de vida?</strong>
-                  <span>Cuéntanos qué tan interesado estás en seguir este proceso.</span>
+                  <strong>¿Te gustaría mejorar tu condición metabólica?</strong>
+                  <span>Cuéntanos qué tan interesado estás en seguir este proceso regenerativo.</span>
                 </span>
               </div>
               <div class="cal-options">
                 <label v-for="opt in [
-                  { value: 'si', icon: 'fa-solid fa-circle-check', label: 'Sí, me interesa seguir adelante' },
-                  { value: 'llamada', icon: 'fa-solid fa-phone', label: 'Primero quisiera una llamada para resolver dudas' },
+                  { value: 'si', icon: 'fa-solid fa-circle-check', label: 'Sí, quiero evaluar mi diabetes' },
+                  { value: 'llamada', icon: 'fa-solid fa-phone', label: 'Primero una llamada para resolver dudas' },
                   { value: 'no', icon: 'fa-solid fa-clock', label: 'Por ahora no, gracias' },
                 ]" :key="opt.value" class="cal-option" :class="{ selected: form.inversion === opt.value }">
                   <input type="radio" :value="opt.value" v-model="form.inversion" hidden />
@@ -239,7 +239,7 @@ watch(() => props.open, (v) => {
               <textarea
                 v-model="form.consulta"
                 class="cal-textarea"
-                placeholder="Ej: Tengo dolor crónico de rodilla desde hace 2 años, he ido con varios especialistas y quiero saber si la medicina regenerativa es opción para mí..."
+                placeholder="Ej: Tengo diabetes tipo 2 desde hace 8 años, uso metformina e insulina, y quiero saber si la medicina regenerativa puede ayudar a estabilizar mi metabolismo..."
                 rows="4"
                 aria-describedby="q3-hint"
               ></textarea>
@@ -256,7 +256,7 @@ watch(() => props.open, (v) => {
               <input type="checkbox" v-model="form.consent" />
               <span class="cal-consent__box" aria-hidden="true" />
               <span class="cal-consent__text">
-                Acepto que PowerHouse Biotech procese mis datos y me contacte para evaluar si mi caso califica para una Consulta Informativa de Evaluación de Viabilidad Regenerativa™ con Juan Román Garza o uno de sus especialistas.
+                Acepto que PowerHouse Biotech procese mis datos y me contacte para evaluar si mi caso de diabetes califica para una Evaluación de Viabilidad Regenerativa™ con Juan Román Garza.
               </span>
             </label>
             <span v-if="touched && !form.consent" class="cal-error">Debes aceptar para continuar</span>

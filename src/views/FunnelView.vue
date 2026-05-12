@@ -39,30 +39,30 @@ const stats = [
 ]
 
 const pillars = [
-  'Sin diagnósticos a ciegas que retrasan tu mejora',
-  'Sin promesas de cura que no podemos cumplir',
-  'Sin terapias regenerativas aplicadas en cuerpos no listos',
-  'Con criterio clínico que prioriza tu seguridad y honestidad',
+  'Ya intentaste múltiples soluciones sin resultados sostenibles',
+  'Estás cansado de controlar sin mejorar realmente',
+  'Quieres entender qué está pasando de fondo en tu metabolismo',
+  'Buscas una estrategia seria, integral y con criterio clínico',
 ]
 
-const methodology = [
+const approach = [
   {
     num: '01',
-    icon: 'fa-solid fa-stethoscope',
-    title: 'Escuchar',
-    body: 'Cada paciente llega con una historia clínica única. Analizamos tus síntomas, tu historial y todo lo que otros especialistas pasaron por alto para encontrar la raíz del problema.',
+    icon: 'fa-solid fa-dna',
+    title: 'Análisis de Señalización Celular',
+    body: 'No miramos solo glucosa. Evaluamos la resistencia a la insulina, inflamación crónica y capacidad regenerativa real de tu páncreas y tejidos metabólicos.',
   },
   {
     num: '02',
-    icon: 'fa-solid fa-vials',
-    title: 'Evaluar',
-    body: 'No nos quedamos con lo superficial. Cruzamos biomarcadores, estudios de imagen y laboratorio para determinar si tu cuerpo está en condiciones de responder a una terapia regenerativa.',
+    icon: 'fa-solid fa-arrow-trend-up',
+    title: 'Recalibración Metabólica Profunda',
+    body: 'Diseñamos un protocolo integral para preparar tu cuerpo antes de cualquier intervención. Priming biológico para que las terapias tengan efecto real.',
   },
   {
     num: '03',
-    icon: 'fa-solid fa-route',
-    title: 'Orientar',
-    body: 'Te decimos la verdad sin rodeos: si tu cuerpo puede regenerarse, te guiamos. Si no, te ahorramos tiempo, dinero y falsas esperanzas. Esa es nuestra promesa.',
+    icon: 'fa-solid fa-clock-rotate',
+    title: 'Continuidad Biológica Sostenida',
+    body: 'No se trata de una solución temporal. Construimos una estrategia de seguimiento para mantener la estabilidad metabólica en el tiempo, sin rebotes.',
   },
 ]
 
@@ -106,16 +106,16 @@ onUnmounted(() => {
 type Proof = { who: string; where: string; minutesAgo: number }
 
 const PROOFS: Proof[] = [
-  { who: 'Empresario Polanco',        where: 'CDMX',           minutesAgo: 3 },
-  { who: 'María Fernanda L.',         where: 'Lomas',          minutesAgo: 7 },
-  { who: 'Andrés Salazar',            where: 'Santa Fe',       minutesAgo: 12 },
-  { who: 'Grupo Financiero G.',       where: 'Polanco',        minutesAgo: 18 },
-  { who: 'Carolina M.',               where: 'Interlomas',     minutesAgo: 22 },
-  { who: 'Director Médico R.',        where: 'Anzures',        minutesAgo: 27 },
-  { who: 'Familia De la Vega',        where: 'Bosques',        minutesAgo: 34 },
-  { who: 'CEO Tech Start-up',         where: 'Santa Fe',       minutesAgo: 41 },
-  { who: 'Roberto S.',                where: 'Lomas Altas',    minutesAgo: 48 },
-  { who: 'Patricia Andrade',          where: 'Polanco',        minutesAgo: 55 },
+  { who: 'Empresario Polanco',        where: 'CDMX',              minutesAgo: 3 },
+  { who: 'María Fernanda L.',         where: 'Lomas',             minutesAgo: 7 },
+  { who: 'Andrés Salazar',            where: 'Santa Fe',          minutesAgo: 12 },
+  { who: 'Grupo Financiero G.',       where: 'Polanco',           minutesAgo: 18 },
+  { who: 'Carolina M. (DM2)',         where: 'Interlomas',        minutesAgo: 22 },
+  { who: 'Director Médico R.',        where: 'Anzures',           minutesAgo: 27 },
+  { who: 'Familia De la Vega',        where: 'Bosques',           minutesAgo: 34 },
+  { who: 'CEO Tech Start-up',         where: 'Santa Fe',          minutesAgo: 41 },
+  { who: 'Roberto S. (DM2)',          where: 'Lomas Altas',       minutesAgo: 48 },
+  { who: 'Patricia Andrade',          where: 'Polanco',           minutesAgo: 55 },
 ]
 
 const proofVisible = ref(false)
@@ -171,7 +171,7 @@ const dismissProof = () => {
       <div class="funnel__urgency-info">
         <span class="funnel__urgency-dot" aria-hidden="true" />
         <i class="fa-solid fa-bolt funnel__urgency-icon" aria-hidden="true"></i>
-        <span class="funnel__urgency-text">APLICACIONES ABIERTAS — solo <strong>20% son aceptadas</strong>. Cierran en:</span>
+        <span class="funnel__urgency-text">EVALUACIONES ABIERTAS — solo <strong>20% de casos son aceptados</strong>. Cierran en:</span>
         <div class="funnel__timer" aria-live="polite" aria-label="Tiempo restante">
           <span class="funnel__timer-block"><strong>{{ hours }}</strong><small>h</small></span>
           <span class="funnel__timer-sep" aria-hidden="true">:</span>
@@ -183,10 +183,10 @@ const dismissProof = () => {
       <button
         type="button"
         class="funnel__urgency-cta"
-        aria-label="Aplicar para Evaluación de Viabilidad Regenerativa"
+        aria-label="Aplicar para Evaluación de Diabetes Regenerativa"
         @click="openModal()"
       >
-        RESERVAR MI CUPO
+        EVALUAR MI CASO
         <span aria-hidden="true">→</span>
       </button>
     </div>
@@ -203,7 +203,7 @@ const dismissProof = () => {
             <span>{{ currentProof.where }}</span>
           </p>
           <p class="funnel__proof-text">
-            Acaba de aplicar para <strong>Evaluación de Viabilidad Regenerativa</strong>
+            Acaba de aplicar para su <strong>Evaluación Metabólica para Diabetes</strong>
           </p>
           <p class="funnel__proof-meta">
             <i class="fa-solid fa-clock" aria-hidden="true"></i>
@@ -227,13 +227,17 @@ const dismissProof = () => {
 
         <p class="funnel__eyebrow">
           <i class="fa-solid fa-dna" aria-hidden="true"></i>
-          PowerHouse Biotech · Medicina Regenerativa · Polanco, CDMX
+          PowerHouse Biotech · Diabetes Regenerativa · Polanco, CDMX
         </p>
 
         <h1 id="funnel-headline" class="funnel__headline">
-          ¿Llevas meses o años buscando una solución real para tu salud?
-          <span class="funnel__headline-accent">Juan Román Garza tiene la respuesta que necesitas</span>
+          ¿Cansado de controlar tu diabetes sin ver mejoras reales?
+          <span class="funnel__headline-accent">Un enfoque regenerativo que busca restaurar tu metabolismo</span>
         </h1>
+
+        <p class="funnel__hero-sub">
+          Protocolos avanzados con medicina regenerativa y seguimiento clínico para mejorar tu calidad de vida y estabilidad metabólica. Si llevas años controlando tu condición pero tu energía y tu metabolismo no responden, el problema no eres tú — es seguir tratando síntomas sin corregir el terreno biológico.
+        </p>
 
         <ul class="funnel__pillars" role="list">
           <li v-for="p in pillars" :key="p" class="funnel__pillar">
@@ -245,7 +249,7 @@ const dismissProof = () => {
         <!-- Urgency callout (refuerzo en hero) -->
         <div class="funnel__urgency-callout" role="note">
           <i class="fa-solid fa-fire" aria-hidden="true"></i>
-          <span>Para pacientes decididos a saber si su cuerpo realmente puede regenerarse — <strong>no a probar terapias a ciegas</strong>.</span>
+          <span>Para pacientes con diabetes decididos a saber si su metabolismo puede regenerarse — <strong>no a probar terapias a ciegas</strong>.</span>
         </div>
 
         <!-- VSL Gated Area -->
@@ -259,7 +263,7 @@ const dismissProof = () => {
               <div class="funnel__vsl-play">
                 <i class="fa-solid fa-play" aria-hidden="true"></i>
               </div>
-              <p class="funnel__vsl-caption">Mira a Juan Román Garza explicar por qué tu cuerpo puede estar bloqueado y cómo destapar su capacidad de regeneración</p>
+              <p class="funnel__vsl-caption">Juan Román Garza explica por qué tu diabetes puede estar bloqueada a nivel celular y cómo destapar la capacidad regenerativa de tu metabolismo</p>
             </div>
           </div>
         </div>
@@ -268,7 +272,7 @@ const dismissProof = () => {
         <div class="funnel__cta-wrap">
           <button class="funnel__cta-btn" @click="openModal()">
             <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
-            APLICAR PARA EVALUACIÓN
+            QUIERO EVALUAR MI CASO
           </button>
           <p class="funnel__cta-sub">
             <i class="fa-solid fa-lock" aria-hidden="true"></i>
@@ -282,7 +286,7 @@ const dismissProof = () => {
     <!-- STATS -->
     <section class="funnel__stats" aria-label="Resultados comprobados">
       <div class="funnel__container">
-        <p class="funnel__section-label funnel__section-label--light">Resultados clínicos reales — pacientes reales</p>
+        <p class="funnel__section-label funnel__section-label--light">Casos metabólicos reales — resultados medibles</p>
         <div class="funnel__stats-grid">
           <div v-for="stat in stats" :key="stat.number" class="funnel__stat">
             <div class="funnel__stat-icon" aria-hidden="true">
@@ -295,48 +299,103 @@ const dismissProof = () => {
       </div>
     </section>
 
-    <!-- PROBLEMA -->
-    <section class="funnel__problem" aria-labelledby="problem-heading">
+    <!-- PARA QUIÉN ES / NO ES -->
+    <section class="funnel__audience" aria-labelledby="audience-heading">
       <div class="funnel__container">
-        <p class="funnel__section-label">¿Te identificas con esto?</p>
-        <h2 id="problem-heading" class="funnel__section-title">
-          El error que cometen la mayoría de pacientes
+        <p class="funnel__section-label">¿Este proceso es para ti?</p>
+        <h2 id="audience-heading" class="funnel__section-title">
+          Para quién es y para quién NO es
         </h2>
-        <div class="funnel__problem-grid">
-          <div class="funnel__problem-item">
-            <i class="fa-solid fa-triangle-exclamation funnel__problem-icon" aria-hidden="true"></i>
-            <div>
-              <strong>Van de doctor en doctor sin rumbo</strong>
-              <p>Acumulan consultas, estudios y diagnósticos contradictorios. Nadie conecta los puntos. Llevan años sin una respuesta clara.</p>
+        <div class="funnel__audience-grid">
+          <div class="funnel__audience-col funnel__audience-col--for">
+            <div class="funnel__audience-header">
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              <span>Este proceso es para personas que:</span>
             </div>
+            <ul class="funnel__audience-list" role="list">
+              <li>Ya intentaron múltiples soluciones sin resultados sostenibles</li>
+              <li>Están cansadas de "controlar" la diabetes sin mejorar realmente</li>
+              <li>Quieren entender qué está pasando de fondo en su metabolismo</li>
+              <li>Están listas para tomar decisiones inteligentes, no solo obedecer inercias médicas</li>
+            </ul>
           </div>
-          <div class="funnel__problem-item">
-            <i class="fa-solid fa-triangle-exclamation funnel__problem-icon" aria-hidden="true"></i>
-            <div>
-              <strong>Prueban terapias sin preparación</strong>
-              <p>Gastan en tratamientos regenerativos, suplementos o medicamentos sin saber si su cuerpo está listo para responder. Resultado: frustración y cuenta bancaria vacía.</p>
+          <div class="funnel__audience-col funnel__audience-col--not">
+            <div class="funnel__audience-header">
+              <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+              <span>Este NO es un proceso para:</span>
             </div>
-          </div>
-          <div class="funnel__problem-item">
-            <i class="fa-solid fa-triangle-exclamation funnel__problem-icon" aria-hidden="true"></i>
-            <div>
-              <strong>El cuerpo simplemente no responde</strong>
-              <p>No porque la terapia sea mala, sino porque el cuerpo no estaba preparado para recibirla. Sin una evaluación de viabilidad regenerativa, todo es un tiro al aire.</p>
-            </div>
+            <ul class="funnel__audience-list" role="list">
+              <li>Quien busca un atajo barato o una cura mágica</li>
+              <li>Quien quiere seguir pateando el problema</li>
+              <li>Quien prefiere anestesiar síntomas y llamarle a eso progreso</li>
+              <li>Quien no está comprometido con su salud, solo con sus síntomas</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- METODOLOGÍA -->
+    <!-- PROBLEMA -->
+    <section class="funnel__problem" aria-labelledby="problem-heading">
+      <div class="funnel__container">
+        <p class="funnel__section-label">La verdad sobre la diabetes</p>
+        <h2 id="problem-heading" class="funnel__section-title">
+          La diabetes no es solo un número alto
+        </h2>
+        <p class="funnel__problem-intro">
+          Es el resultado de un sistema que lleva tiempo deteriorándose:
+        </p>
+        <div class="funnel__problem-grid">
+          <div class="funnel__problem-item">
+            <i class="fa-solid fa-bolt funnel__problem-icon" aria-hidden="true"></i>
+            <div>
+              <strong>Resistencia a la insulina</strong>
+              <p>Tus células dejaron de responder a la insulina. La glucosa se acumula en sangre mientras tus órganos se quedan sin energía.</p>
+            </div>
+          </div>
+          <div class="funnel__problem-item">
+            <i class="fa-solid fa-droplet funnel__problem-icon" aria-hidden="true"></i>
+            <div>
+              <strong>Inflamación crónica</strong>
+              <p>Un estado inflamatorio silencioso daña tus tejidos y órganos. Es la base de las complicaciones: neuropatía, retinopatía, enfermedad renal.</p>
+            </div>
+          </div>
+          <div class="funnel__problem-item">
+            <i class="fa-solid fa-chart-line funnel__problem-icon" aria-hidden="true"></i>
+            <div>
+              <strong>Desregulación metabólica</strong>
+              <p>Tu metabolismo energético está desordenado. El cuerpo no usa la glucosa de forma eficiente, tu energía celular está comprometida.</p>
+            </div>
+          </div>
+          <div class="funnel__problem-item">
+            <i class="fa-solid fa-flask funnel__problem-icon" aria-hidden="true"></i>
+            <div>
+              <strong>Deterioro celular progresivo</strong>
+              <p>Tu capacidad de recuperación biológica está limitada. El daño avanza aunque los números en el laboratorio parezcan estables.</p>
+            </div>
+          </div>
+        </div>
+        <p class="funnel__problem-footer">
+          La diabetes no solo altera tus análisis — altera tu libertad, tu tranquilidad y la dinámica de tu familia. Tu fatiga, tu dificultad para bajar de peso, tu dependencia creciente de medicación y la sensación de que tu cuerpo ya no responde no son casualidad.
+        </p>
+        <div class="funnel__cta-inline">
+          <button class="funnel__cta-btn" @click="openModal()">
+            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+            QUIERO EVALUAR MI CASO
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVALUACIÓN DE VIABILIDAD REGENERATIVA -->
     <section class="funnel__method" aria-labelledby="method-heading">
       <div class="funnel__container">
-        <p class="funnel__section-label">Metodología de Juan Román Garza</p>
+        <p class="funnel__section-label">Evaluación de Viabilidad Regenerativa™</p>
         <h2 id="method-heading" class="funnel__section-title">
-          Así evaluamos si tu cuerpo puede regenerarse
+          Creado para responder una sola pregunta: ¿tu cuerpo realmente puede mejorar?
         </h2>
         <div class="funnel__method-grid">
-          <div v-for="m in methodology" :key="m.num" class="funnel__method-card">
+          <div v-for="m in approach" :key="m.num" class="funnel__method-card">
             <div class="funnel__method-num" aria-hidden="true">{{ m.num }}</div>
             <div class="funnel__method-icon" aria-hidden="true">
               <i :class="m.icon"></i>
@@ -348,26 +407,208 @@ const dismissProof = () => {
       </div>
     </section>
 
-    <!-- TESTIMONIAL -->
-    <section class="funnel__testimonial" aria-labelledby="testimonial-heading">
+    <!-- PROTOCOLO 4 DIMENSIONES -->
+    <section class="funnel__dimensions" aria-labelledby="dimensions-heading">
       <div class="funnel__container">
-        <p class="funnel__section-label">Casos clínicos</p>
-        <div class="funnel__testimonial-card">
-          <i class="fa-solid fa-quote-left funnel__testimonial-quote" aria-hidden="true"></i>
-          <blockquote class="funnel__testimonial-text">
-            "Después de 4 años con dolores articulares, 12 especialistas y miles de pesos gastados,
-            Juan Román Garza fue el primero en decirme: 'Tu cuerpo está inflamado, no roto'.
-            En 3 meses de preparación regenerativa, mi calidad de vida cambió por completo."
-          </blockquote>
-          <footer class="funnel__testimonial-author">
-            <div class="funnel__testimonial-avatar" aria-hidden="true">
-              <i class="fa-solid fa-user"></i>
+        <p class="funnel__section-label">Protocolo de Precisión</p>
+        <h2 id="dimensions-heading" class="funnel__section-title">
+          Evaluación en 4 Dimensiones — máxima precisión biológica
+        </h2>
+        <p class="funnel__dimensions-intro">Cada fase está interconectada. No son pasos aislados, es un ecosistema de recuperación.</p>
+        <div class="funnel__dimensions-grid">
+          <div class="funnel__dim-card">
+            <div class="funnel__dim-num">01</div>
+            <h3 class="funnel__dim-title">Evaluación del Terreno Biológico</h3>
+            <p class="funnel__dim-body">No miramos solo laboratorios. Evaluamos inflamación, estrés oxidativo y capacidad regenerativa real de tu metabolismo.</p>
+          </div>
+          <div class="funnel__dim-card">
+            <div class="funnel__dim-num">02</div>
+            <h3 class="funnel__dim-title">Priming Metabólico</h3>
+            <p class="funnel__dim-body">Preparamos tu cuerpo para que sea capaz de recibir y procesar las terapias avanzadas. Un cuerpo receptivo es la clave del éxito.</p>
+          </div>
+          <div class="funnel__dim-card">
+            <div class="funnel__dim-num">03</div>
+            <h3 class="funnel__dim-title">Intervención de Precisión</h3>
+            <p class="funnel__dim-body">Aplicamos el protocolo integral (IV, Nebulizado, Oral) diseñado específicamente para tu caso y tu firma biológica.</p>
+          </div>
+          <div class="funnel__dim-card">
+            <div class="funnel__dim-num">04</div>
+            <h3 class="funnel__dim-title">Seguimiento Biológico</h3>
+            <p class="funnel__dim-body">Monitoreamos la respuesta de tus células y ajustamos el protocolo en tiempo real para mantener la estabilidad metabólica.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 VÍAS DE ACCESO -->
+    <section class="funnel__pathways" aria-labelledby="pathways-heading">
+      <div class="funnel__container">
+        <p class="funnel__section-label">Abordaje en 3 Vías</p>
+        <h2 id="pathways-heading" class="funnel__section-title">
+          No creemos en soluciones de una sola vía
+        </h2>
+        <p class="funnel__pathways-intro">La complejidad de la diabetes requiere un abordaje multifactorial, preciso y sostenido.</p>
+        <div class="funnel__pathways-grid">
+          <div class="funnel__path-card funnel__path-card--phase">
+            <div class="funnel__path-badge">FASE 0</div>
+            <h3 class="funnel__path-title">Priming Biológico</h3>
+            <p class="funnel__path-body">Preparamos tu terreno metabólico antes de cualquier intervención mayor. Un cuerpo receptivo es la clave del éxito.</p>
+          </div>
+          <div class="funnel__path-card">
+            <div class="funnel__path-icon" aria-hidden="true">
+              <i class="fa-solid fa-syringe"></i>
             </div>
-            <div>
-              <strong>Paciente · Caso #PHB-0189</strong>
-              <span>Evaluación de Viabilidad Regenerativa™ — Polanco, CDMX</span>
+            <span class="funnel__path-tag">SISTÉMICA</span>
+            <h3 class="funnel__path-title">Vía Intravenosa (IV)</h3>
+            <p class="funnel__path-body">Acción sistémica profunda para modular la inflamación y potenciar la recuperación general a través del torrente sanguíneo.</p>
+            <span class="funnel__path-tech">TECNOLOGÍA PHB GRADO MÉDICO</span>
+          </div>
+          <div class="funnel__path-card">
+            <div class="funnel__path-icon" aria-hidden="true">
+              <i class="fa-solid fa-lungs"></i>
             </div>
-          </footer>
+            <span class="funnel__path-tag">ABSORCIÓN RÁPIDA</span>
+            <h3 class="funnel__path-title">Vía Nebulizada</h3>
+            <p class="funnel__path-body">Ruta complementaria de alta biodisponibilidad para soporte metabólico directo, ideal para optimizar la oxigenación celular.</p>
+            <span class="funnel__path-tech">TECNOLOGÍA PHB GRADO MÉDICO</span>
+          </div>
+          <div class="funnel__path-card">
+            <div class="funnel__path-icon" aria-hidden="true">
+              <i class="fa-solid fa-capsules"></i>
+            </div>
+            <span class="funnel__path-tag">CONTINUIDAD</span>
+            <h3 class="funnel__path-title">Vía Oral</h3>
+            <p class="funnel__path-body">Mantenimiento y soporte biológico constante para sostener los resultados en el tiempo y estabilizar el terreno metabólico.</p>
+            <span class="funnel__path-tech">TECNOLOGÍA PHB GRADO MÉDICO</span>
+          </div>
+        </div>
+        <div class="funnel__cta-inline">
+          <button class="funnel__cta-btn" @click="openModal()">
+            <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+            QUIERO EVALUAR MI CASO
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section class="funnel__cases" aria-labelledby="cases-heading">
+      <div class="funnel__container">
+        <p class="funnel__section-label">Resultados que hablan</p>
+        <h2 id="cases-heading" class="funnel__section-title">
+          Casos reales, evaluados bajo criterio de Viabilidad Regenerativa™
+        </h2>
+        <div class="funnel__cases-grid">
+          <div class="funnel__case-card">
+            <div class="funnel__case-header">
+              <i class="fa-solid fa-file-waveform" aria-hidden="true"></i>
+              <span>Diabetes Tipo 2 + Fatiga</span>
+            </div>
+            <div class="funnel__case-detail">
+              <div class="funnel__case-context">
+                <strong>CONTEXTO</strong>
+                <p>Paciente de 54 años con diagnóstico de 12 años. Dependencia de metformina e insulina con picos constantes de glucosa.</p>
+              </div>
+              <div class="funnel__case-report">
+                <strong>DECIDE™ REPORT</strong>
+                <p>Evaluación EVR™ identificó resistencia periférica severa y un terreno biológico altamente acidificado.</p>
+              </div>
+              <div class="funnel__case-outcome">
+                <strong>DESENLACE PHB™</strong>
+                <p>Reducción del 70% en requerimiento de insulina | Estabilización de niveles basales en 30 días | Recuperación total de claridad mental</p>
+              </div>
+            </div>
+          </div>
+          <div class="funnel__case-card">
+            <div class="funnel__case-header">
+              <i class="fa-solid fa-brain" aria-hidden="true"></i>
+              <span>Neuropatía Incipiente</span>
+            </div>
+            <div class="funnel__case-detail">
+              <div class="funnel__case-context">
+                <strong>CONTEXTO</strong>
+                <p>Paciente con dolor neuropático en extremidades. Evolución tórpida a pesar de control farmacológico convencional.</p>
+              </div>
+              <div class="funnel__case-report">
+                <strong>DECIDE™ REPORT</strong>
+                <p>Se detectó microinflamación neurovascular y niveles críticos de estrés oxidativo tisular.</p>
+              </div>
+              <div class="funnel__case-outcome">
+                <strong>DESENLACE PHB™</strong>
+                <p>Remisión del dolor en un 85% | Mejora medible en la conducción nerviosa | Retorno a actividad física regular</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="funnel__benefits" aria-labelledby="benefits-heading">
+      <div class="funnel__container">
+        <p class="funnel__section-label">No solo mejores niveles</p>
+        <h2 id="benefits-heading" class="funnel__section-title">
+          Una mejor vida
+        </h2>
+        <div class="funnel__benefits-grid">
+          <div class="funnel__benefit-card">
+            <div class="funnel__benefit-icon" aria-hidden="true">
+              <i class="fa-solid fa-sun"></i>
+            </div>
+            <h3 class="funnel__benefit-title">Claridad y Energía</h3>
+            <p class="funnel__benefit-body">Recupera la vitalidad que el desorden metabólico te había robado. Despierta con la mente despejada y el cuerpo listo para el día.</p>
+            <span class="funnel__benefit-tag">EVOLUCIÓN BIOLÓGICA</span>
+          </div>
+          <div class="funnel__benefit-card">
+            <div class="funnel__benefit-icon" aria-hidden="true">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+            <h3 class="funnel__benefit-title">Estabilidad Biológica</h3>
+            <p class="funnel__benefit-body">Un sistema que funciona en equilibrio, sin picos ni caídas drásticas. Seguridad interna en cada proceso fisiológico.</p>
+            <span class="funnel__benefit-tag">EVOLUCIÓN BIOLÓGICA</span>
+          </div>
+          <div class="funnel__benefit-card">
+            <div class="funnel__benefit-icon" aria-hidden="true">
+              <i class="fa-solid fa-hand-fist"></i>
+            </div>
+            <h3 class="funnel__benefit-title">Libertad de Acción</h3>
+            <p class="funnel__benefit-body">Deja de vivir en función de tu condición y empieza a vivir en función de tus metas. El control real vuelve a tus manos.</p>
+            <span class="funnel__benefit-tag">EVOLUCIÓN BIOLÓGICA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENTIATORS -->
+    <section class="funnel__diffs" aria-labelledby="diffs-heading">
+      <div class="funnel__container">
+        <p class="funnel__section-label">La diferencia está en el criterio biológico</p>
+        <h2 id="diffs-heading" class="funnel__section-title">
+          Precisión molecular y honestidad clínica
+        </h2>
+        <div class="funnel__diffs-grid">
+          <div class="funnel__diff-card">
+            <div class="funnel__diff-stat">98%</div>
+            <h3 class="funnel__diff-title">Precisión en Diagnóstico Molecular</h3>
+            <p class="funnel__diff-body">No silenciamos síntomas. Resolvemos el desequilibrio biológico que los genera a través de una lectura profunda de tu terreno celular.</p>
+            <span class="funnel__diff-tag">Criterio Clínico Superior</span>
+          </div>
+          <div class="funnel__diff-card">
+            <div class="funnel__diff-icon" aria-hidden="true">
+              <i class="fa-solid fa-rotate"></i>
+            </div>
+            <h3 class="funnel__diff-title">Intervención Multimodal</h3>
+            <p class="funnel__diff-body">Cada cuerpo es único. Tu tratamiento integra vías IV, nebulizadas y orales diseñadas exclusivamente para tu firma biológica.</p>
+            <span class="funnel__diff-tag">Protocolo 360° Real</span>
+          </div>
+          <div class="funnel__diff-card">
+            <div class="funnel__diff-icon" aria-hidden="true">
+              <i class="fa-solid fa-microscope"></i>
+            </div>
+            <h3 class="funnel__diff-title">Ciencia Regenerativa</h3>
+            <p class="funnel__diff-body">Utilizamos las terapias celulares y exosomales más avanzadas, con respaldo clínico internacional y protocolos de seguridad Grado A.</p>
+            <span class="funnel__diff-tag">Tecnología de Vanguardia</span>
+          </div>
         </div>
       </div>
     </section>
@@ -386,10 +627,11 @@ const dismissProof = () => {
           <p class="funnel__authority-role">Especialista en Medicina Regenerativa · PowerHouse Biotech</p>
           <p class="funnel__authority-bio">
             Con más de dos décadas dedicadas a la medicina regenerativa, Juan Román Garza
-            ha evaluado a miles de pacientes para determinar si su cuerpo está listo para regenerarse.
-            Su enfoque no es vender terapias — es aplicar criterio clínico honesto para decirte
-            si la regeneración es viable en tu caso. Ha ayudado a cientos de pacientes en Polanco,
-            Lomas, Santa Fe e Interlomas a recuperar su calidad de vida.
+            ha evaluado a miles de pacientes con trastornos metabólicos para determinar si su
+            cuerpo está listo para regenerarse. Su enfoque no es vender terapias — es aplicar
+            criterio clínico honesto para decirte si la regeneración metabólica es viable en tu caso.
+            Ha ayudado a cientos de pacientes con diabetes tipo 2 en Polanco, Lomas, Santa Fe e
+            Interlomas a recuperar su calidad de vida.
           </p>
           <ul class="funnel__authority-creds" role="list">
             <li><i class="fa-solid fa-check-circle" aria-hidden="true"></i> +15,000 pacientes evaluados con criterio regenerativo</li>
@@ -404,16 +646,16 @@ const dismissProof = () => {
     <section class="funnel__cta-final" aria-labelledby="cta-final-heading">
       <div class="funnel__container">
         <h2 id="cta-final-heading" class="funnel__cta-final-title">
-          ¿Listo para saber si tu cuerpo aún puede sanar?
+          ¿Estás listo para dejar de controlar y empezar a resolver?
         </h2>
         <p class="funnel__cta-final-sub">
-          Juan Román Garza te espera en Polanco para una Consulta Informativa
-          de Evaluación de Viabilidad Regenerativa™. Sin costo, sin compromiso.
-          Solo criterio clínico honesto.
+          No todos los casos son aptos. Pero todos merecen una respuesta honesta.
+          Juan Román Garza evaluará tu caso para determinar si la regeneración metabólica
+          es viable para ti. Sin costo, sin compromiso. Solo criterio clínico honesto.
         </p>
         <button class="funnel__cta-btn" @click="openModal()">
           <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
-          RESERVAR MI CUPO INMEDIATO
+          QUIERO EVALUAR MI CASO
         </button>
         <p class="funnel__cta-sub">
           <i class="fa-solid fa-lock" aria-hidden="true"></i>
@@ -1313,6 +1555,479 @@ const dismissProof = () => {
     color: #3A4F6A;
     i { color: colors.$OS-BLUE; font-size: 0.82rem; flex-shrink: 0; }
   }
+}
+
+// ── Hero subtitle ────────────────────────────────────────────────────────────
+.funnel__hero-sub {
+  font-size: 1.05rem;
+  color: #3A4F6A;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+  max-width: 680px;
+}
+
+// ── Audience ─────────────────────────────────────────────────────────────────
+.funnel__audience {
+  padding: 4rem 0;
+  background: #ffffff;
+}
+
+.funnel__audience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
+}
+
+.funnel__audience-col {
+  padding: 1.75rem;
+  border-radius: 16px;
+
+  &--for {
+    background: #EEF7F1;
+    border: 1px solid rgba(#00B4A6, 0.2);
+  }
+
+  &--not {
+    background: #FFF5F5;
+    border: 1px solid rgba(#E63946, 0.15);
+  }
+}
+
+.funnel__audience-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: fonts.$font-interface;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+
+  .funnel__audience-col--for & {
+    color: colors.$PHB-AQUA;
+    i { color: #00B4A6; }
+  }
+
+  .funnel__audience-col--not & {
+    color: colors.$OS-RED;
+    i { color: colors.$OS-RED; }
+  }
+}
+
+.funnel__audience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  li {
+    font-size: 0.88rem;
+    color: #3A4F6A;
+    line-height: 1.5;
+    padding-left: 1.25rem;
+    position: relative;
+
+    &::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+  }
+}
+
+// ── Problem extras ───────────────────────────────────────────────────────────
+.funnel__problem-intro {
+  font-size: 0.95rem;
+  color: #4A5F7A;
+  margin: -0.5rem 0 1.5rem;
+  line-height: 1.5;
+}
+
+.funnel__problem-footer {
+  font-size: 0.9rem;
+  color: #4A5F7A;
+  line-height: 1.6;
+  margin: 1.25rem 0 0;
+  padding: 1rem;
+  background: #EEF4FF;
+  border-left: 4px solid colors.$OS-BLUE;
+  border-radius: 8px;
+}
+
+.funnel__cta-inline {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+// ── 4 Dimensions ─────────────────────────────────────────────────────────────
+.funnel__dimensions {
+  padding: 4rem 0;
+  background: #ffffff;
+}
+
+.funnel__dimensions-intro {
+  font-size: 0.95rem;
+  color: #4A5F7A;
+  margin: -0.5rem 0 1.5rem;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.funnel__dimensions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  @media (max-width: 640px) { grid-template-columns: 1fr; }
+}
+
+.funnel__dim-card {
+  padding: 1.5rem;
+  background: #F5F8FF;
+  border: 1px solid #E4EDF7;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 63, 125, 0.08);
+  }
+}
+
+.funnel__dim-num {
+  @include fonts.heading-font(800);
+  font-size: 2.8rem;
+  line-height: 1;
+  color: rgba(colors.$OS-NAVY, 0.06);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  user-select: none;
+}
+
+.funnel__dim-title {
+  @include fonts.heading-font(700);
+  font-size: 1rem;
+  color: colors.$OS-DARK;
+  margin: 0 0 0.5rem;
+  line-height: 1.3;
+}
+
+.funnel__dim-body {
+  font-size: 0.86rem;
+  color: #4A5F7A;
+  line-height: 1.55;
+  margin: 0;
+}
+
+// ── 3 Pathways ───────────────────────────────────────────────────────────────
+.funnel__pathways {
+  padding: 4rem 0;
+  background: #F5F8FF;
+}
+
+.funnel__pathways-intro {
+  font-size: 0.95rem;
+  color: #4A5F7A;
+  margin: -0.5rem 0 1.5rem;
+  line-height: 1.5;
+}
+
+.funnel__pathways-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  @media (max-width: 768px) { grid-template-columns: 1fr; }
+}
+
+.funnel__path-card {
+  background: #ffffff;
+  border: 1px solid #E4EDF7;
+  border-radius: 14px;
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 63, 125, 0.08);
+  }
+
+  &--phase {
+    background: linear-gradient(135deg, colors.$OS-NAVY 0%, #0D2B4A 100%);
+    border-color: colors.$OS-NAVY;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 1 / -1;
+
+    .funnel__path-title { color: #ffffff; }
+    .funnel__path-body { color: rgba(255, 255, 255, 0.7); }
+  }
+}
+
+.funnel__path-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-family: fonts.$font-interface;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+.funnel__path-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: colors.$OS-NAVY;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  i { color: #ffffff; font-size: 1rem; }
+}
+
+.funnel__path-tag {
+  @include fonts.interface-font(700);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: colors.$OS-BLUE;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.funnel__path-title {
+  @include fonts.heading-font(700);
+  font-size: 1rem;
+  color: colors.$OS-DARK;
+  margin: 0 0 0.5rem;
+}
+
+.funnel__path-body {
+  font-size: 0.86rem;
+  color: #4A5F7A;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.funnel__path-tech {
+  @include fonts.interface-font(600);
+  font-size: 0.62rem;
+  letter-spacing: 1.5px;
+  color: rgba(colors.$OS-NAVY, 0.35);
+  text-transform: uppercase;
+}
+
+// ── Case Studies ─────────────────────────────────────────────────────────────
+.funnel__cases {
+  padding: 4rem 0;
+  background: #ffffff;
+}
+
+.funnel__cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
+}
+
+.funnel__case-card {
+  background: #F9FBFF;
+  border: 1px solid #E4EDF7;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 63, 125, 0.08);
+  }
+}
+
+.funnel__case-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  background: colors.$OS-NAVY;
+  color: #ffffff;
+  font-family: fonts.$font-interface;
+  font-size: 0.88rem;
+  font-weight: 700;
+
+  i { font-size: 1rem; opacity: 0.7; }
+}
+
+.funnel__case-detail {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  strong {
+    display: block;
+    font-family: fonts.$font-interface;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: colors.$OS-BLUE;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  p {
+    font-size: 0.84rem;
+    color: #3A4F6A;
+    line-height: 1.55;
+    margin: 0;
+  }
+}
+
+.funnel__case-report strong { color: #7A5EFF; }
+.funnel__case-outcome strong { color: #00B4A6; }
+
+// ── Benefits ─────────────────────────────────────────────────────────────────
+.funnel__benefits {
+  padding: 4rem 0;
+  background: #F5F8FF;
+}
+
+.funnel__benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
+}
+
+.funnel__benefit-card {
+  background: #ffffff;
+  border: 1px solid #E4EDF7;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 63, 125, 0.08);
+  }
+}
+
+.funnel__benefit-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, colors.$OS-NAVY 0%, colors.$OS-BLUE 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  i { color: #ffffff; font-size: 1.2rem; }
+}
+
+.funnel__benefit-title {
+  @include fonts.heading-font(700);
+  font-size: 1.05rem;
+  color: colors.$OS-DARK;
+  margin: 0 0 0.5rem;
+}
+
+.funnel__benefit-body {
+  font-size: 0.86rem;
+  color: #4A5F7A;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.funnel__benefit-tag {
+  @include fonts.interface-font(600);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: rgba(colors.$OS-NAVY, 0.3);
+  text-transform: uppercase;
+}
+
+// ── Differentiators ──────────────────────────────────────────────────────────
+.funnel__diffs {
+  padding: 4rem 0;
+  background: #ffffff;
+}
+
+.funnel__diffs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  @media (max-width: 700px) { grid-template-columns: 1fr; }
+}
+
+.funnel__diff-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid #E4EDF7;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 63, 125, 0.08);
+    border-color: colors.$OS-BLUE;
+  }
+}
+
+.funnel__diff-stat {
+  @include fonts.heading-font(800);
+  font-size: 2.8rem;
+  line-height: 1;
+  color: colors.$OS-BLUE;
+  margin-bottom: 0.75rem;
+}
+
+.funnel__diff-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: colors.$OS-NAVY;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+  i { color: #ffffff; font-size: 1.2rem; }
+}
+
+.funnel__diff-title {
+  @include fonts.heading-font(700);
+  font-size: 1rem;
+  color: colors.$OS-DARK;
+  margin: 0 0 0.5rem;
+}
+
+.funnel__diff-body {
+  font-size: 0.86rem;
+  color: #4A5F7A;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+}
+
+.funnel__diff-tag {
+  @include fonts.interface-font(600);
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  color: rgba(colors.$OS-NAVY, 0.3);
+  text-transform: uppercase;
 }
 
 // ── CTA Final ────────────────────────────────────────────────────────────────

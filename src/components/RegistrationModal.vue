@@ -63,23 +63,23 @@ const form = ref({
 })
 
 const URGENCY_LABEL: Record<Exclude<Urgency, ''>, string> = {
-  'immediate': 'Crítica — busca evaluación clínica este mes',
+  'immediate': 'Crítica — busca evaluación metabólica este mes',
   'next-month': 'Alta — busca respuesta en 1–3 meses',
   'just-looking': 'Explorando — sin urgencia clínica',
 }
 
 const MOTIVO_LABEL: Record<string, string> = {
-  'dolor-articular': 'Dolor articular o muscular crónico',
-  'fatiga': 'Fatiga crónica o falta de energía',
-  'metabolica': 'Problemas metabólicos (peso, diabetes, tiroides)',
-  'autoinmune': 'Enfermedad autoinmune o inflamatoria',
-  'regenerativa': 'Medicina regenerativa / segunda opinión',
+  'dm2-reciente': 'Diabetes tipo 2 diagnosticada hace menos de 5 años',
+  'dm2-cronica': 'Diabetes tipo 2 con más de 5 años de evolución',
+  'prediabetes': 'Prediabetes o resistencia a la insulina',
+  'dm1': 'Diabetes tipo 1 / autoinmune',
+  'complicaciones': 'Complicaciones de diabetes (neuropatía, retinopatía, renal)',
 }
 
 const motivoOpts = Object.entries(MOTIVO_LABEL).map(([value, label]) => ({ value, label }))
 
 const urgencyOpts: { value: Exclude<Urgency, ''>; label: string; sub: string; hot?: boolean }[] = [
-  { value: 'immediate',   label: 'Necesito atención este mes', sub: 'Urgencia clínica', hot: true },
+  { value: 'immediate',   label: 'Necesito evaluación este mes', sub: 'Urgencia metabólica', hot: true },
   { value: 'next-month',  label: 'En los próximos 1–3 meses',     sub: 'Planificación' },
   { value: 'just-looking', label: 'Solo estoy explorando',         sub: 'Sin urgencia' },
 ]
@@ -94,8 +94,8 @@ function calcTags(urgency: Urgency): string[] {
 
 function buildNote(f: typeof form.value, country: string): string {
   return [
-    'Lead desde funnel VSL — PowerHouse Biotech (registro inicial).',
-    `Motivo de consulta: ${MOTIVO_LABEL[f.empresa] ?? f.empresa}`,
+    'Lead desde funnel — PowerHouse Biotech Diabetes Regenerativa (registro inicial).',
+    `Tipo de diabetes / condición: ${MOTIVO_LABEL[f.empresa] ?? f.empresa}`,
     `Urgencia: ${f.urgency ? URGENCY_LABEL[f.urgency] : '—'}`,
     `País: ${country}`,
   ].join('\n')
@@ -285,9 +285,9 @@ watch(dropdownOpen, open => {
 
           <!-- ── FORMULARIO ─────────────────────────────────── -->
           <!-- ── FORMULARIO ─────────────────────────────────── -->
-            <p class="rmodal__eyebrow">Consulta con Juan Román Garza</p>
-            <h2 id="rmodal-title" class="rmodal__title">Aplica para tu consulta<br><span class="rmodal__title-accent">informativa sin costo</span></h2>
-            <p class="rmodal__subtitle">Solo aceptamos el 20% de las aplicaciones. Completa tus datos para que Juan Román Garza evalúe tu caso.</p>
+            <p class="rmodal__eyebrow">Evaluación de Diabetes Regenerativa</p>
+            <h2 id="rmodal-title" class="rmodal__title">Aplica para tu evaluación<br><span class="rmodal__title-accent">metabólica sin costo</span></h2>
+            <p class="rmodal__subtitle">Solo aceptamos el 20% de las aplicaciones. Completa tus datos para que Juan Román Garza evalúe tu caso de diabetes o condición metabólica.</p>
 
             <form class="rmodal__form" @submit.prevent="handleSubmit" novalidate>
 
@@ -417,7 +417,7 @@ watch(dropdownOpen, open => {
 
               <!-- Motivo de consulta — clickable -->
               <div class="rmodal__field rmodal__field--motivo" :class="{ 'has-error': touched.empresa && errors.empresa }">
-                <label>Motivo de tu consulta</label>
+                <label>Tu condición metabólica</label>
                 <div class="rmodal__motivo-opts" role="radiogroup">
                   <label
                     v-for="opt in motivoOpts"
@@ -491,14 +491,14 @@ watch(dropdownOpen, open => {
                 </template>
                 {{ submitting
                   ? 'Enviando...'
-                  : (form.urgency === 'immediate' ? 'RESERVAR MI CUPO AHORA' : 'AGENDAR MI ASESORÍA') }}
+                  : (form.urgency === 'immediate' ? 'RESERVAR MI EVALUACIÓN AHORA' : 'SOLICITAR MI EVALUACIÓN') }}
               </button>
 
               <p class="rmodal__legal">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
                 </svg>
-                100% gratuito · Sin compromiso · Tus datos están seguros
+                100% gratuito · Evaluación clínica · Tus datos están seguros
               </p>
 
             </form>

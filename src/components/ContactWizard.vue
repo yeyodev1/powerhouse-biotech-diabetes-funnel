@@ -90,12 +90,12 @@ const URGENCY_LABEL: Record<string, string> = {
 
 function buildNotes(): string {
   return [
-    `Condición principal: ${s2.value.projectType}`,
-    `Estudios recientes disponibles: ${s2.value.budget === 'yes' ? 'Sí' : 'No'}`,
+    `Condición metabólica: ${s2.value.projectType}`,
+    `Laboratorios recientes (HbA1c): ${s2.value.budget === 'yes' ? 'Sí' : 'No'}`,
     `Expectativa del paciente: ${s2.value.objective}`,
     `Urgencia clínica: ${URGENCY_LABEL[s2.value.urgency] ?? s2.value.urgency}`,
     s2.value.message.trim() ? `Antecedentes / detalle del paciente: ${s2.value.message.trim()}` : null,
-    `Fuente: Formulario PowerHouse Biotech — Evaluación de Viabilidad Regenerativa™`,
+    `Fuente: Formulario PowerHouse Biotech — Diabetes Regenerativa`,
   ].filter(Boolean).join('\n')
 }
 
@@ -201,23 +201,23 @@ function goBack() {
 
 // ── Opciones step 2 ───────────────────────────────────────────────────────────
 const projectOpts = [
-  { value: 'Osteoarticular (dolor / lesión / artrosis)', label: 'Osteoarticular (dolor / lesión / artrosis)' },
-  { value: 'Metabólica (diabetes / obesidad / fatiga crónica)', label: 'Metabólica (diabetes / obesidad / fatiga crónica)' },
-  { value: 'Autoinmune o inflamatoria crónica', label: 'Autoinmune o inflamatoria crónica' },
-  { value: 'Neurológica / cognitiva (memoria, neuropatía)', label: 'Neurológica / cognitiva (memoria, neuropatía)' },
-  { value: 'Otra', label: 'Otra (no estoy seguro/a)' },
+  { value: 'Diabetes tipo 2 - diagnóstico reciente (<5 años)', label: 'Diabetes tipo 2 - diagnóstico reciente (<5 años)' },
+  { value: 'Diabetes tipo 2 - más de 5 años de evolución', label: 'Diabetes tipo 2 - más de 5 años de evolución' },
+  { value: 'Prediabetes o resistencia a la insulina', label: 'Prediabetes o resistencia a la insulina' },
+  { value: 'Neuropatía diabética o complicaciones metabólicas', label: 'Neuropatía diabética o complicaciones metabólicas' },
+  { value: 'Diabetes tipo 1 o autoinmune', label: 'Diabetes tipo 1 o autoinmune' },
 ]
 
 const budgetOpts = [
-  { value: 'yes', label: 'Sí, tengo laboratorios recientes (<6 meses)' },
-  { value: 'no', label: 'No, o son anteriores a 6 meses' },
+  { value: 'yes', label: 'Sí, tengo laboratorios recientes con hemoglobina glucosilada (HbA1c)' },
+  { value: 'no', label: 'No, o mis estudios son anteriores a 6 meses' },
 ]
 
 const objectiveOpts = [
-  { value: 'Reducir dolor / inflamación crónica.', label: 'Reducir dolor o inflamación crónica.' },
-  { value: 'Mejorar calidad de vida y energía.', label: 'Mejorar calidad de vida, energía y sueño.' },
-  { value: 'Prevenir el avance de mi condición.', label: 'Prevenir el avance de mi condición.' },
-  { value: 'Curarme totalmente.', label: 'Curarme totalmente / revertir mi condición.' },
+  { value: 'Reducir dependencia de insulina o medicamentos.', label: 'Reducir dependencia de insulina o medicamentos.' },
+  { value: 'Estabilizar niveles de glucosa y energía.', label: 'Estabilizar niveles de glucosa y energía diaria.' },
+  { value: 'Prevenir o revertir complicaciones de la diabetes.', label: 'Prevenir o revertir complicaciones (neuropatía, renal, visual).' },
+  { value: 'Curarme totalmente.', label: 'Curarme totalmente / revertir mi diabetes.' },
 ]
 
 const urgencyOpts = [
@@ -247,7 +247,7 @@ const urgencyOpts = [
       </div>
       <p class="wiz__step-hint">
         Paso {{ step === 1 ? '1' : '2' }} de 2 —
-        {{ step === 1 ? 'Tu información de contacto' : 'Cuéntanos sobre tu caso clínico' }}
+        {{ step === 1 ? 'Tu información de contacto' : 'Cuéntanos sobre tu caso metabólico' }}
       </p>
     </div>
 
@@ -351,7 +351,7 @@ const urgencyOpts = [
         <!-- Q1: Proyecto -->
         <div class="wf-question">
           <p class="wf-q-num">01</p>
-          <p class="wf-q-title">¿Qué condición es la que más te preocupa hoy?</p>
+          <p class="wf-q-title">¿Cuál es tu condición metabólica actual?</p>
           <label
             v-for="opt in projectOpts"
             :key="opt.value"
@@ -367,7 +367,7 @@ const urgencyOpts = [
         <!-- Q2: Presupuesto -->
         <div class="wf-question">
           <p class="wf-q-num">02</p>
-          <p class="wf-q-title">¿Tienes estudios o exámenes recientes que podamos revisar?</p>
+          <p class="wf-q-title">¿Tienes laboratorios recientes (HbA1c, glucosa en ayuno, perfil lipídico)?</p>
           <label
             v-for="opt in budgetOpts"
             :key="opt.value"
@@ -383,7 +383,7 @@ const urgencyOpts = [
         <!-- Q3: Objetivo -->
         <div class="wf-question">
           <p class="wf-q-num">03</p>
-          <p class="wf-q-title">¿Qué esperas conseguir con una terapia regenerativa?</p>
+          <p class="wf-q-title">¿Qué esperas lograr con una evaluación regenerativa?</p>
           <label
             v-for="opt in objectiveOpts"
             :key="opt.value"
@@ -464,10 +464,10 @@ const urgencyOpts = [
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         </div>
-        <h3 class="wiz__ok-title">¡Recibimos tu consulta!</h3>
+        <h3 class="wiz__ok-title">¡Recibimos tu solicitud!</h3>
         <p class="wiz__ok-body">
-          Nuestro equipo revisará tu información y se pondrá en contacto contigo
-          muy pronto. Revisa tu WhatsApp o correo.
+          El equipo de Juan Román Garza revisará tu caso metabólico y se pondrá
+          en contacto contigo muy pronto. Revisa tu WhatsApp o correo.
         </p>
       </div>
     </Transition>

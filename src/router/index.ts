@@ -32,13 +32,13 @@ const router = createRouter({
       name: 'funnel',
       component: FunnelView,
       meta: {
-        title: 'PowerHouse Biotech | Juan Román Garza — Evaluación de Viabilidad Regenerativa™',
+        title: 'PowerHouse Biotech | Diabetes Regenerativa — Evaluación de Viabilidad Metabólica™',
         description:
-          'Consulta con Juan Román Garza en Polanco, CDMX. Más de 20 años en Medicina Regenerativa. Evaluamos si tu cuerpo puede regenerarse antes de cualquier terapia. Solo 20% aceptados.',
+          '¿Cansado de controlar tu diabetes sin ver mejoras reales? Juan Román Garza evalúa si tu metabolismo puede regenerarse. Más de 20 años en Medicina Regenerativa. Solo 20% aceptados.',
         canonical: 'https://www.powerhousebiotech.com/',
-        ogTitle: 'PowerHouse Biotech | Juan Román Garza — Medicina Regenerativa en Polanco',
+        ogTitle: 'PowerHouse Biotech | Diabetes Regenerativa — Juan Román Garza',
         ogDescription:
-          'Evaluación de Viabilidad Regenerativa™ por Juan Román Garza. +15,000 pacientes evaluados. Criterio clínico honesto en Polanco, CDMX.',
+          'Evaluación de Viabilidad Regenerativa™ para diabetes. Juan Román Garza. +15,000 pacientes evaluados. Criterio clínico honesto.',
         ogUrl: 'https://www.powerhousebiotech.com/',
       } satisfies RouteMeta,
     },
@@ -47,11 +47,11 @@ const router = createRouter({
       name: 'qualify',
       component: QualifyView,
       meta: {
-        title: 'Califica tu caso | Juan Román Garza — PowerHouse Biotech',
-        description: 'Responde unas preguntas y descubre si tu caso califica para una Evaluación de Viabilidad Regenerativa™ con Juan Román Garza en Polanco, CDMX.',
+        title: 'Califica tu caso metabólico | Juan Román Garza — PowerHouse Biotech',
+        description: 'Responde unas preguntas y descubre si tu diabetes o condición metabólica califica para una Evaluación de Viabilidad Regenerativa™ con Juan Román Garza.',
         canonical: 'https://www.powerhousebiotech.com/calificar',
-        ogTitle: 'Califica tu caso | Juan Román Garza',
-        ogDescription: 'Descubre si calificas para una consulta con Juan Román Garza en Polanco. Solo 20% aceptados.',
+        ogTitle: 'Califica tu caso metabólico | Juan Román Garza',
+        ogDescription: 'Descubre si tu diabetes califica para evaluación con Juan Román Garza. Solo 20% aceptados.',
         ogUrl: 'https://www.powerhousebiotech.com/calificar',
       } satisfies RouteMeta,
     },
@@ -60,11 +60,11 @@ const router = createRouter({
       name: 'booking',
       component: BookingView,
       meta: {
-        title: 'Agenda tu Consulta | Juan Román Garza — Paso 2 de 2',
-        description: 'Selecciona el día y hora para tu consulta informativa con Juan Román Garza en PowerHouse Biotech, Polanco.',
+        title: 'Agenda tu Evaluación Metabólica | Juan Román Garza',
+        description: 'Selecciona el día y hora para tu evaluación de diabetes regenerativa con Juan Román Garza en PowerHouse Biotech, Polanco.',
         canonical: 'https://www.powerhousebiotech.com/agendar',
-        ogTitle: 'Agenda tu Consulta | Juan Román Garza',
-        ogDescription: 'Elige tu horario y reserva tu consulta informativa con Juan Román Garza.',
+        ogTitle: 'Agenda tu Evaluación Metabólica | Juan Román Garza',
+        ogDescription: 'Elige tu horario y reserva tu evaluación de diabetes regenerativa con Juan Román Garza.',
         ogUrl: 'https://www.powerhousebiotech.com/agendar',
       } satisfies RouteMeta,
     },
@@ -73,11 +73,11 @@ const router = createRouter({
       name: 'booked',
       component: BookedView,
       meta: {
-        title: 'Consulta Confirmada | PowerHouse Biotech',
-        description: 'Tu consulta con Juan Román Garza está confirmada. Revisa tu correo y prepárate para tu Evaluación de Viabilidad Regenerativa™.',
+        title: 'Evaluación Metabólica Confirmada | PowerHouse Biotech',
+        description: 'Tu evaluación de diabetes regenerativa con Juan Román Garza está confirmada. Revisa tu correo y prepárate.',
         canonical: 'https://www.powerhousebiotech.com/cita-confirmada',
-        ogTitle: 'Consulta Confirmada | Juan Román Garza',
-        ogDescription: 'Tu consulta está reservada. Juan Román Garza te contactará pronto.',
+        ogTitle: 'Evaluación Metabólica Confirmada | Juan Román Garza',
+        ogDescription: 'Tu evaluación de diabetes está reservada. Juan Román Garza te contactará pronto.',
         ogUrl: 'https://www.powerhousebiotech.com/cita-confirmada',
       } satisfies RouteMeta,
     },
@@ -86,11 +86,11 @@ const router = createRouter({
       name: 'no-space',
       component: NoSpaceView,
       meta: {
-        title: 'Aplicación no calificada | PowerHouse Biotech',
-        description: 'Solo aceptamos el 20% de las aplicaciones. En este momento tu perfil no coincide con los criterios de Juan Román Garza. No es un rechazo permanente.',
+        title: 'Caso no calificado | PowerHouse Biotech — Diabetes Regenerativa',
+        description: 'Solo aceptamos el 20% de las aplicaciones. En este momento tu perfil metabólico no coincide con los criterios de Juan Román Garza.',
         canonical: 'https://www.powerhousebiotech.com/sin-espacio',
-        ogTitle: 'Aplicación no calificada | Juan Román Garza',
-        ogDescription: 'Solo el 20% de las aplicaciones son aceptadas. Criterio honesto de Juan Román Garza.',
+        ogTitle: 'Caso no calificado | Juan Román Garza',
+        ogDescription: 'Solo el 20% de las aplicaciones metabólicas son aceptadas. Criterio honesto de Juan Román Garza.',
         ogUrl: 'https://www.powerhousebiotech.com/sin-espacio',
       } satisfies RouteMeta,
     },
@@ -176,9 +176,14 @@ const isFresh = (key: string, ttl: number): boolean => {
 
 const PUBLIC_ROUTES = ['privacy-policy', 'legal-notice']
 
+const IS_DEV_ROUTER = typeof window !== 'undefined' && window.location.hostname === 'localhost'
+
 router.beforeEach((to, from, next) => {
   const routeName = to.name as string
   if (PUBLIC_ROUTES.includes(routeName)) return next()
+
+  // En desarrollo local los guards se desactivan para poder navegar libremente
+  if (IS_DEV_ROUTER) return next()
 
   const bookedFresh = isFresh('os_booked_at', BOOKED_TTL_MS)
   const disqFresh   = isFresh('os_disq_at',   DISQ_TTL_MS)

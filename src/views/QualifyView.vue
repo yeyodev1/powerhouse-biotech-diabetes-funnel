@@ -25,11 +25,11 @@ const calendarOpen = ref(false)
         </p>
         <h1 class="vv-h1">
           Responde unas preguntas y
-          <span class="vv-accent">descubre si calificas</span>
+          <span class="vv-accent">descubre si tu metabolismo califica</span>
         </h1>
         <p class="vv-subtitle">
-          Juan Román Garza evaluará tu caso en base a tu zona, tu perfil y tu motivo de consulta.
-          Solo el 20% de los solicitantes califica — honestidad clínica ante todo.
+          Juan Román Garza evaluará tu caso en base a tu perfil metabólico, tu condición de diabetes
+          y tu disposición al tratamiento. Solo el 20% califica — honestidad clínica ante todo.
         </p>
       </section>
 
