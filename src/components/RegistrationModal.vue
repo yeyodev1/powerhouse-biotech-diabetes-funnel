@@ -46,8 +46,39 @@ const otherList = allCountries
 
 const countries = [...priorityList, { code: '---', name: '─────────', dial: '', flag: '' }, ...otherList]
 
+// ── Detección de país (locale → ISO code) ─────────────────────────────────────
+function detectCountryFromLocale(): Country | null {
+  const langs = [navigator.language, ...(navigator.languages || [])]
+  for (const tag of langs) {
+    if (!tag) continue
+    const region = tag.split('-')[1]?.toUpperCase()
+    if (region) {
+      const match = allCountries.find(c => c.code === region)
+      if (match) return match
+    }
+  }
+  return null
+}
+
+async function detectCountryFromIP(): Promise<Country | null> {
+  try {
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), 2500)
+    const res = await fetch('https://ipapi.co/json/', { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) return null
+    const data = await res.json() as { country_code?: string }
+    const code = data.country_code?.toUpperCase()
+    if (!code) return null
+    return allCountries.find(c => c.code === code) ?? null
+  } catch {
+    return null
+  }
+}
+
 // ── Estado del formulario ─────────────────────────────────────────────────────
-const selectedCountry = ref<Country>(priorityList[0])
+const selectedCountry = ref<Country>(detectCountryFromLocale() ?? priorityList[0])
+const userPickedCountry = ref(false)
 const dropdownOpen = ref(false)
 const countrySearch = ref('')
 const submitting = ref(false)
@@ -175,6 +206,7 @@ const filteredCountries = computed(() => {
 const selectCountry = (c: Country) => {
   if (c.code === '---') return
   selectedCountry.value = c
+  userPickedCountry.value = true
   dropdownOpen.value = false
   countrySearch.value = ''
   form.value.phone = ''
@@ -283,6 +315,13 @@ watch(() => props.open, (val) => {
 onMounted(() => {
   document.addEventListener('mousedown', handleClickOutside)
   document.addEventListener('keydown', onKeydown)
+
+  // Refina país via geo-IP. Si el usuario ya eligió manualmente, no sobreescribe.
+  detectCountryFromIP().then(ipCountry => {
+    if (ipCountry && !userPickedCountry.value && !form.value.phone) {
+      selectedCountry.value = ipCountry
+    }
+  })
 })
 
 onUnmounted(() => {
