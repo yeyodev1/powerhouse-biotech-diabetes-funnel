@@ -3,7 +3,7 @@
 // (riesgo conocido: el token es público para cualquiera que inspeccione el JS).
 // Rotar desde Events Manager si se detecta abuso.
 
-const PIXEL_ID = '1288670429531709'
+const PIXEL_ID = '4506500926256505'
 const CAPI_TOKEN = 'EAAKyoXo4MS4BRYOGcOybWXtHbWX3iFutxbadTRzV1m9QVGq6CgN9XeL9QIJP9ZCgAPqmRCBxUTZBpD6zgKlG5ITApdepkb1kMBJLXdyUyZBDyBpII5Hv5aXZBHbTvYKgO5ILupRZBv4rSmBLDlaebMZB274VvZACaxHiPou9D97919U6GEerpsbv3lDOj9cyxZAASAZDZD'
 const GRAPH_VERSION = 'v19.0'
 const CAPI_ENDPOINT = `https://graph.facebook.com/${GRAPH_VERSION}/${PIXEL_ID}/events?access_token=${CAPI_TOKEN}`

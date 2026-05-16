@@ -182,6 +182,12 @@ const validate = () => {
   return Object.keys(e).length === 0
 }
 
+const formValid = computed(() =>
+  Object.entries(validators).every(
+    ([field, fn]) => fn(form.value[field as keyof typeof form.value]) === null
+  )
+)
+
 const onBlur = (field: string) => {
   touched.value[field] = true
   const msg = validators[field]?.(form.value[field as keyof typeof form.value])
@@ -547,7 +553,7 @@ watch(dropdownOpen, open => {
                 class="rmodal__submit"
                 :class="{ 'rmodal__submit--urgent': form.urgency === 'immediate' }"
                 type="submit"
-                :disabled="submitting"
+                :disabled="submitting || !formValid"
               >
                 <svg v-if="submitting" class="rmodal__spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
